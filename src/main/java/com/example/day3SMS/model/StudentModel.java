@@ -1,4 +1,5 @@
 package com.example.day3SMS.model;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -43,7 +44,9 @@ public class StudentModel {
     @Id
 
     private String id;
+    @NotBlank(message =  " name cannot be blank")
     private String name;
+
     private int age;
     private String email;
 
