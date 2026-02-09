@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Management</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div>
+        <h1>Student Management</h1>
+        <p class="subtitle">Create, update, delete and view all students.</p>
+      </div>
+      <div class="status-pill" id="apiStatus">Checking API…</div>
+    </header>
+
+    <div id="celebrationLayer" class="celebration-layer hidden"></div>
+
+    <main class="app-main">
+      <div class="form-row">
+        <!-- Add Student Panel (Left) -->
+        <section class="panel panel-form">
+          <div class="panel-header">
+            <h2>Add Student</h2>
+          </div>
+
+          <form id="addStudentForm" class="grid-form">
+            <div class="field">
+              <label for="addName">Name</label>
+              <input id="addName" name="name" type="text" placeholder="Enter full name" required />
+            </div>
+
+            <div class="field">
+              <label for="addAge">Age</label>
+              <input id="addAge" name="age" type="number" min="1" max="120" placeholder="e.g. 21" required />
+            </div>
+
+            <div class="field">
+              <label for="addEmail">Email</label>
+              <input id="addEmail" name="email" type="email" placeholder="name@example.com" required />
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-primary" id="addSubmitBtn">Add Student</button>
+            </div>
+          </form>
+        </section>
+
+        <!-- Update Student Panel (Right) -->
+        <section class="panel panel-form">
+          <div class="panel-header">
+            <h2>Update Student</h2>
+            <button type="button" id="resetUpdateFormBtn" class="btn-ghost small">Clear</button>
+          </div>
+
+          <div class="update-search">
+            <input
+              type="text"
+              id="updateSearchInput"
+              class="search-input"
+              placeholder="Search student to edit (name or email)"
+            />
+          </div>
+
+          <form id="updateStudentForm" class="grid-form">
+            <input type="hidden" id="updateStudentId" />
+
+            <div class="field">
+              <label for="updateName">Name</label>
+              <input id="updateName" name="name" type="text" placeholder="Select a student from below to edit" required />
+            </div>
+
+            <div class="field">
+              <label for="updateAge">Age</label>
+              <input id="updateAge" name="age" type="number" min="1" max="120" placeholder="Age" required />
+            </div>
+
+            <div class="field">
+              <label for="updateEmail">Email</label>
+              <input id="updateEmail" name="email" type="email" placeholder="Email" required />
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-primary" id="updateSubmitBtn">Update Student</button>
+            </div>
+          </form>
+
+          <div id="messageBar" class="message-bar hidden"></div>
+        </section>
+      </div>
+
+      <!-- View/Search Students Panel -->
+      <section class="panel panel-table">
+        <div class="panel-header">
+          <h2>All Students</h2>
+          <div class="panel-controls">
+            <input
+              type="text"
+              id="searchInput"
+              class="search-input"
+              placeholder="Search by name or email"
+            />
+            <button type="button" id="refreshBtn" class="btn-ghost small">Refresh</button>
+          </div>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th class="actions-col">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="studentsTableBody">
+              <tr>
+                <td colspan="4" class="empty-state">No students yet. Add your first student above.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span>Student Management System</span>
+      <span class="divider">•</span>
+      <span>Frontend powered by HTML, CSS &amp; JavaScript</span>
+    </footer>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
+
